@@ -4,9 +4,10 @@
 			<xsl:element name="span">
 				  <xsl:attribute name="class">
 						<xsl:value-of select="name()"/>
-						<xsl:if test="position() + 1 = last()">
-							  <xsl:text> last</xsl:text>
-						</xsl:if>
+						<xsl:call-template name="serialposition">
+							  <xsl:with-param name="position" select="position()"/>
+							  <xsl:with-param name="last" select="last()"/>
+						</xsl:call-template>
 				  </xsl:attribute>
 				  <xsl:choose>
 						<xsl:when test="child::link">
